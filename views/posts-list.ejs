@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("includes/head", { title: "All Posts" }) %>
+  <link rel="stylesheet" href="/css/posts.css">
+</head>
+
+<body>
+  <%- include("includes/header") %>
+  <main id="all-posts">
+    <h1>All Posts</h1>
+    <% if (!posts || posts.length === 0) { %>
+      <p>어떠한 블로그 포스트도 존재하지 않습니다.</p>
+      <a class="btn" href="/new-post">새로운 포스트 작성하기</a>
+    <% } else { %>
+      <ol id="posts-list">
+        <% for (let post of posts) { %>
+          <%- include("includes/post-item", { post: post }) %>
+        <% } %>
+      </ol>
+    <% } %>
+  </main> 
+</body>
+
+</html>
