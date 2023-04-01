@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("includes/head", { title: "Update Post" }) %>
+  <link rel="stylesheet" href="/css/forms.css">
+</head>
+
+<body>
+  <%- include("includes/header") %>
+  <main>
+    <h1>포스트 편집</h1>
+    <form action="/posts/<%= post._id %>/edit" method="POST">
+      <div class="form-control">
+        <label for="title">제목</label>
+        <input type="text" id="title" name="title" value="<%= post.title %>" required>
+      </div>
+      <div class="form-control">
+        <label for="summary">개요</label>
+        <input type="text" id="summary" name="summary" value="<%= post.summary %>" required maxlength="255">
+      </div>
+      <div class="form-control">
+        <label for="content">본문</label>
+        <textarea id="content" name="content" required rows="5"><%= post.content %></textarea>
+      </div>
+      <button class="btn">편집하기</button>
+    </form>
+  </main>
+</body>
+</html>

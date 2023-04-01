@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("includes/head", { title: "Post Detail" }) %>
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/posts.css" />
+    <script src="/scripts/comments.js" defer></script>
+  </head>
+
+  <body>
+    <%- include("includes/header") %>
+    <main id="post-detail">
+      <h1><%= post.title %></h1>
+        <section id="post-meta">
+          <address>
+            <a href="mailto:<%= post.author.email %>"><%= post.author.name %></a>
+          </address>
+          <time><%= post.date %></time>
+      </section>
+      <hr />
+      <section>
+        <p id="content"><%= post.content %></p>
+      </section>
+      <section id="comments">
+        <p>댓글이 있습니다. '댓글 보기' 버튼을 눌러 확인해 주세요.</p>
+        <button id="load-comments-btn" class="btn btn-alt" data-postId="<%= post._id %>">댓글 보기</button>
+      <section id="comments-form">
+        <h2>댓글 작성</h2>
+        <form data-postId="<%= post._id %>">
+          <div class="form-control">
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title" required>
+          </div>
+          <div class="form-control">
+            <label for="content">댓글</label>
+            <textarea name="content" id="content" rows="3" required></textarea>
+          </div>
+          <button class="btn">댓글 작성</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

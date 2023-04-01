@@ -10,6 +10,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(express.urlencoded({extended: false}));
+app.use(express.json()); // json 파일(Ajax) 디코딩
 app.use(express.static("public"));
 
 app.use(blogRoutes);
