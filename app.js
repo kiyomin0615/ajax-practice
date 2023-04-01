@@ -15,6 +15,10 @@ app.use(express.static("public"));
 
 app.use(blogRoutes);
 
+app.use(function(error, req, res, next) {
+  res.status(500).render("500");
+})
+
 database.connectToDatabase().then(function() {
   app.listen(3000);
 })
